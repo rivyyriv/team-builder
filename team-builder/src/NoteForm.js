@@ -2,6 +2,25 @@ import React from "react";
 
 const NoteForm = props => {
 
+  const [title, setTitle] = React.useState("");
+  const [body, setBody] = React.useState("");
+
+  const handleTitle = event => setTitle(event.target.value);
+  const handleBody = event => setBody(event.target.value);
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    if (title && body) {
+      props.setNotes([...props.notes, { title, body }]);
+      resetState();
+    }
+  };
+
+  const resetState = () => {
+    setTitle("");
+    setBody("");
+  };
+
  
 
   return (
